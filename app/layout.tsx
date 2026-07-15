@@ -1,28 +1,29 @@
 import type { Metadata } from "next"
-import { Oswald, Inter } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import { CartProvider } from "@/components/cart-provider"
 
-const oswald = Oswald({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-oswald",
+  variable: "--font-geist-sans",
   display: "swap",
 })
 
-const inter = Inter({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist-mono",
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Explosives — Industrial & Mining Blasting Supplies",
+  title: "Explosives — Where Ambition Meets Loyalty",
   description:
-    "Explosives supplies engineered energetics, initiation systems and blasting equipment for surface and underground mining. Emulsions, ANFO, detonators, boosters and more.",
+    "Explosives is a premium streetwear label. Shop bags, apparel, headwear and accessories — printed on demand and shipped directly to your door.",
   generator: "v0.app",
 }
 
 export const viewport = {
-  themeColor: "#0e0e10",
+  themeColor: "#ffffff",
 }
 
 export default function RootLayout({
@@ -31,8 +32,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`bg-background ${oswald.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={`bg-background ${geistSans.variable} ${geistMono.variable}`}>
+      <body className="font-sans antialiased">
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   )
 }
